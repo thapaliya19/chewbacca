@@ -7,7 +7,7 @@ dotenv.config();
 const http = require('http');
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.write('Hello World!');
+  res.write('uugggh raaaaaahhgh');
   res.end();
 }).listen(process.env.PORT || 8080);
 
@@ -18,6 +18,16 @@ client.on('ready', readyDiscord);
 
 function readyDiscord() {
     console.log('Uhhhhhh...Uhhhh..');
+    client.user
+    .setPresence({
+      status: 'online',
+      activity: {
+        type: 'PLAYING',
+        name: `uugggh raaaaaahhgh`,
+      },
+    })
+    .then(console.log)
+    .catch(console.error);
 }
 
 const helloReplies = [
