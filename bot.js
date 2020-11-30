@@ -1,7 +1,6 @@
 'use strict';
 
 const { Client, MessageAttachment } = require('discord.js');
-const { measureMemory } = require('vm');
 const client = new Client();
 client.login('NzgyOTEyOTI3NTg1MjcxODM4.X8TGew.poGvi7LWL2tf1EaLgPzMNR1AiJg');
 
