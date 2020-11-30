@@ -16,6 +16,6 @@
   "dependencies": {
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
-    "request": "^2.88.2"
+    "http": "0.0.1-security"
   }
 }
