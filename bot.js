@@ -1,8 +1,11 @@
 'use strict';
 
+const dotenv = require("dotenv");
+
+dotenv.config();
+
 const { Client, MessageAttachment } = require('discord.js');
 const client = new Client();
-client.login('NzgyOTEyOTI3NTg1MjcxODM4.X8TGew.poGvi7LWL2tf1EaLgPzMNR1AiJg');
 
 client.on('ready', readyDiscord);
 
@@ -54,3 +57,5 @@ function messageReceived(msg) {
         }
     }
 }
+
+client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
