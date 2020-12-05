@@ -30,26 +30,8 @@ function readyDiscord() {
     .catch(console.error);
 }
 
-const helloReplies = [
-    'huuguughghg',
-    'nuuawh',
-    'uughghhhgh',
-    'huurh raaaaaahhgh',
-    'uuh uughguughhhghghghhhgh',
-    'hnnnhrrhhh huurh huuguughghg',
-    'huuguughghg aarrragghuuhw aaaaahnr',
-    'aguhwwgggghhh aaahnruh aarrragghuuhw',
-    'uggguh uughguughhhghghghhhgh aarrragghuuhw uughghhhgh aaahnruh',
-    'huurh raaaaaahhgh huurh wrrhwrwwhw uggguh',
-    'huurh aarrragghuuhw raaaaaahhgh',
-    'huuguughghg aaaaahnr uuh',
-    'aaahnruh aarrragghuuhw uggguh uughghhhgh',
-    'uughghhhgh huurh raaaaaahhgh uughguughhhghghghhhgh huurh',
-    'ggwwwrghh',
-    'wwwwwwwgggghhhrrrrw',
-    'rwgwgwarahhhhwwrggwrwrw',
-    'wagrrrrwwgahhhhwwwrrggawwwwwwrr'
-]
+const replies = require('./replies.json');
+
 try {
     client.on('message', messageReceived);
 }
@@ -62,13 +44,13 @@ function messageReceived(msg) {
     if(!msg.author.bot) {
         if(message.startsWith('chewie happy')) {
             const attachment = new MessageAttachment('./happy.jpg');
-            const index = Math.floor(Math.random() * helloReplies.length);
-            msg.channel.send(`\**${helloReplies[index]}**`, attachment);
+            const index = Math.floor(Math.random() * replies.length);
+            msg.channel.send(`\**${replies[index]}**`, attachment);
         }
         else if(message.startsWith('chewie ') || message === 'chewie') {
             // const attachment = new MessageAttachment('./img/hello.jpg');
-            const index = Math.floor(Math.random() * helloReplies.length);
-            msg.channel.send(`\**${helloReplies[index]}**`, {
+            const index = Math.floor(Math.random() * replies.length);
+            msg.channel.send(`\**${replies[index]}**`, {
                 tts: true
             });
         }
