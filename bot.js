@@ -30,7 +30,7 @@ function readyDiscord() {
     .catch(console.error);
 }
 
-const replies = require('./replies.json');
+const {replies} = require('./replies.json');
 
 try {
     client.on('message', messageReceived);
