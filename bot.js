@@ -42,8 +42,13 @@ catch(err) {
 function messageReceived(msg) {
     const message = msg.content.toLowerCase();
     if(!msg.author.bot) {
-        if(message.startsWith('chewie happy')) {
-            const attachment = new MessageAttachment('./happy.jpg');
+        if(message.startsWith('chewie ') && message.includes('rabin')) {
+            const attachment = new MessageAttachment('./img/rabin.jpg');
+            const index = Math.floor(Math.random() * replies.length);
+            msg.channel.send(`\**${replies[index]}**`, attachment);
+        }
+        else if(message.startsWith('chewie happy')) {
+            const attachment = new MessageAttachment('./img/happy.jpg');
             const index = Math.floor(Math.random() * replies.length);
             msg.channel.send(`\**${replies[index]}**`, attachment);
         }
