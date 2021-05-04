@@ -42,22 +42,39 @@ catch(err) {
 function messageReceived(msg) {
     const message = msg.content.toLowerCase();
     if(!msg.author.bot) {
-        if(message.startsWith('chewie ') && message.includes('rabin')) {
-            const attachment = new MessageAttachment('./img/rabin.jpg');
-            const index = Math.floor(Math.random() * replies.length);
-            msg.channel.send(`\**${replies[index]}**`, attachment);
+        if(msg.channel.type == "dm" && msg.author.id == process.env.BOT_AUTHOR) {
+            if(message.startsWith("!sendall"))
+            {
+                if(message.includes("star wars day"))
+                {
+                    const attachment = new MessageAttachment('./img/star_wars_day.jpeg');
+                    const index = Math.floor(Math.random() * replies.length);
+                    const reply = `@everyone \**${replies[index]}**`;
+                    msg.channel.send(reply, attachment);
+                    client.guilds.fetch(process.env.QUTUB_MINAR_SERVER)
+                            .then(guild => guild.channels.cache.get(process.env.QUTUB_MINAR_SERVER).send(reply, attachment))
+                            .catch(console.error);
+                }
+            }
         }
-        else if(message.startsWith('chewie happy')) {
-            const attachment = new MessageAttachment('./img/happy.jpg');
-            const index = Math.floor(Math.random() * replies.length);
-            msg.channel.send(`\**${replies[index]}**`, attachment);
-        }
-        else if(message.startsWith('chewie ') || message === 'chewie') {
-            // const attachment = new MessageAttachment('./img/hello.jpg');
-            const index = Math.floor(Math.random() * replies.length);
-            msg.channel.send(`\**${replies[index]}**`, {
-                tts: true
-            });
+        else{
+                if(message.startsWith('chewie ') && message.includes('rabin')) {
+                const attachment = new MessageAttachment('./img/rabin.jpg');
+                const index = Math.floor(Math.random() * replies.length);
+                msg.channel.send(`\**${replies[index]}**`, attachment);
+            }
+            else if(message.startsWith('chewie happy')) {
+                const attachment = new MessageAttachment('./img/happy.jpg');
+                const index = Math.floor(Math.random() * replies.length);
+                msg.channel.send(`\**${replies[index]}**`, attachment);
+            }
+            else if(message.startsWith('chewie ') || message === 'chewie') {
+                // const attachment = new MessageAttachment('./img/hello.jpg');
+                const index = Math.floor(Math.random() * replies.length);
+                msg.channel.send(`\**${replies[index]}**`, {
+                    tts: true
+                });
+            }
         }
     }
 }
