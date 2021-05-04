@@ -52,7 +52,7 @@ function messageReceived(msg) {
                     const reply = `@everyone \**${replies[index]}**`;
                     msg.channel.send(reply, attachment);
                     client.guilds.fetch(process.env.QUTUB_MINAR_SERVER)
-                            .then(guild => guild.channels.cache.get(process.env.QUTUB_MINAR_SERVER).send(reply, attachment))
+                            .then(guild => guild.channels.cache.get(process.env.QUTUB_MINAR_CHANNEL).send(reply, attachment))
                             .catch(console.error);
                 }
             }
